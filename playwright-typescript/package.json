@@ -1,11 +1,11 @@
 {
-  "name": "stripe-demo-playwright",
+  "author": "Jani Jegoroff",
+  "name": "playwright-typescript",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "Test automation example for Stripe checkout flow using Playwright and Typescript",
   "scripts": {},
   "keywords": [],
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.25.2"
