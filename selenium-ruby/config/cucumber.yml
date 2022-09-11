@@ -1,0 +1,8 @@
+# profiles
+default: --publish-quiet -p default_flags -p default_tags
+
+# flags
+default_flags: -c --strict features --format pretty
+
+# tags
+default_tags: --tags 'not @pending'

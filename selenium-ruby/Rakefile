@@ -1,0 +1,7 @@
+require 'cucumber/rake/task'
+
+task default: %i[cucumber]
+
+desc 'Run tests'
+Cucumber::Rake::Task.new(:cucumber) do
+end
