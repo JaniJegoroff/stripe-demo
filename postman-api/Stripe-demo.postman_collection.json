@@ -1,0 +1,433 @@
+{
+	"info": {
+		"_postman_id": "10a515c4-5a25-4d1e-960a-c46ae8225063",
+		"name": "Stripe-demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Payment methods - valid payment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"pm_id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{api-key-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "key",
+							"value": "{{api-key-public}}",
+							"type": "default"
+						},
+						{
+							"key": "type",
+							"value": "card",
+							"type": "default"
+						},
+						{
+							"key": "card[number]",
+							"value": "4242424242424242",
+							"type": "default"
+						},
+						{
+							"key": "card[cvc]",
+							"value": "123",
+							"type": "default"
+						},
+						{
+							"key": "card[exp_month]",
+							"value": "12",
+							"type": "default"
+						},
+						{
+							"key": "card[exp_year]",
+							"value": "30",
+							"type": "default"
+						},
+						{
+							"key": "billing_details[name]",
+							"value": "Satoshi Nakamoto",
+							"type": "default"
+						},
+						{
+							"key": "billing_details[email]",
+							"value": "satoshi@nakamoto.btc",
+							"type": "default"
+						},
+						{
+							"key": "billing_details[address][country]",
+							"value": "US",
+							"type": "default"
+						},
+						{
+							"key": "billing_details[address][postal_code]",
+							"value": "12345",
+							"type": "default"
+						},
+						{
+							"key": "guid",
+							"value": "82af1552-d3d0-45fe-8bb3-95b6ce1aab3430348f",
+							"type": "default"
+						},
+						{
+							"key": "muid",
+							"value": "23d51510-92cd-433c-9f23-219a903712bc36420a",
+							"type": "default"
+						},
+						{
+							"key": "sid",
+							"value": "71af052d-446e-4ea3-aadd-2f78c6f10fcbe2d60c",
+							"type": "default"
+						},
+						{
+							"key": "payment_user_agent",
+							"value": "stripe.js%2Fe63c37019%3B+stripe-js-v3%2Fe63c37019%3B+checkout",
+							"type": "default"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/v1/payment_methods",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"v1",
+						"payment_methods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Checkout sessions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let jsonData = JSON.parse(responseBody);",
+							"pm.collectionVariables.set(\"cs_id\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{api-key-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "success_url",
+							"value": "https://httpbin.org/post",
+							"type": "text"
+						},
+						{
+							"key": "cancel_url",
+							"value": "https://httpbin.org/post",
+							"type": "text"
+						},
+						{
+							"key": "mode",
+							"value": "payment",
+							"type": "text"
+						},
+						{
+							"key": "line_items[0][quantity]",
+							"value": "1",
+							"type": "default"
+						},
+						{
+							"key": "line_items[0][price]",
+							"value": "price_1LejbjIEZGfIpTnOoAXdge4Y",
+							"type": "default"
+						},
+						{
+							"key": "payment_intent_data[shipping][address][line1]",
+							"value": "510 Townsend St",
+							"type": "default"
+						},
+						{
+							"key": "payment_intent_data[shipping][address][state]",
+							"value": "CA",
+							"type": "default"
+						},
+						{
+							"key": "payment_intent_data[shipping][address][postal_code]",
+							"value": "94103",
+							"type": "default"
+						},
+						{
+							"key": "payment_intent_data[shipping][address][city]",
+							"value": "San Francisco",
+							"type": "default"
+						},
+						{
+							"key": "payment_intent_data[shipping][address][country]",
+							"value": "US",
+							"type": "default"
+						},
+						{
+							"key": "payment_intent_data[shipping][name]",
+							"value": "Satoshi Nakamoto",
+							"type": "default"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/v1/checkout/sessions",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"v1",
+						"checkout",
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Payment pages",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{api-key-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "key",
+							"value": "{{api-key-public}}",
+							"type": "default"
+						},
+						{
+							"key": "payment_method",
+							"value": "{{pm_id}}",
+							"type": "default"
+						},
+						{
+							"key": "expected_amount",
+							"value": "1500",
+							"type": "default"
+						},
+						{
+							"key": "last_displayed_line_item_group_details[subtotal]",
+							"value": "1500",
+							"type": "default"
+						},
+						{
+							"key": "eid",
+							"value": "NA",
+							"type": "default"
+						},
+						{
+							"key": "last_displayed_line_item_group_details[total_exclusive_tax]",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "last_displayed_line_item_group_details[total_inclusive_tax]",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "last_displayed_line_item_group_details[total_discount_amount]",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "last_displayed_line_item_group_details[shipping_rate_amount]",
+							"value": "0",
+							"type": "default"
+						},
+						{
+							"key": "expected_payment_method_type",
+							"value": "card",
+							"type": "default"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/v1/payment_pages/{{cs_id}}/confirm",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"v1",
+						"payment_pages",
+						"{{cs_id}}",
+						"confirm"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Checkout sessions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{api-key-secret}}",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "key",
+							"value": "{{api-key-public}}",
+							"type": "default"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base-url}}/v1/checkout/sessions",
+					"host": [
+						"{{base-url}}"
+					],
+					"path": [
+						"v1",
+						"checkout",
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code should be 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "pm_id",
+			"value": ""
+		},
+		{
+			"key": "cs_id",
+			"value": ""
+		}
+	]
+}
