@@ -53,6 +53,7 @@ api-key-secret
 
 ### Run tests in Postman
 
-1. Import Postman collection
+1. Import `Postman` collection
 2. Set required environment variables
 3. Run test set in `Stripe-demo` collection
+4. Check logs in your `stripe` dashboard
