@@ -26,7 +26,7 @@ Version 9.31.0 (9.31.0)
    ```
    # Triggering this event will prepare customer, product, price, payment intent etc. data
 
-   $ stripe trigger checkout.session.completed`
+   $ stripe trigger checkout.session.completed
    ```
 2. You are now ready to run `Stripe-demo` collection tests in `Postman`
 
