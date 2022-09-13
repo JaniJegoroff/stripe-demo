@@ -2,6 +2,7 @@ import { Locator, Page } from '@playwright/test';
 
 export class CheckoutPage {
   readonly page: Page;
+  readonly iframe;
   readonly emailField: Locator;
   readonly nameField: Locator;
   readonly cardNumberField: Locator;
@@ -14,14 +15,15 @@ export class CheckoutPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.emailField = page.frameLocator('#checkout-demo').locator('#email');
-    this.nameField = page.frameLocator('#checkout-demo').locator('#billingName');
-    this.cardNumberField = page.frameLocator('#checkout-demo').locator('#cardNumber');
-    this.cardExpiryField = page.frameLocator('#checkout-demo').locator('#cardExpiry');
-    this.cardCvcField = page.frameLocator('#checkout-demo').locator('#cardCvc');
-    this.regionField = page.frameLocator('#checkout-demo').locator('#billingPostalCode');
-    this.submitButton = page.frameLocator('#checkout-demo').locator('data-testid=hosted-payment-submit-button');
-    this.paymentDeclinedField = page.frameLocator('#checkout-demo').locator("//span[@role='alert']",
+    this.iframe = page.frameLocator('#checkout-demo');
+    this.emailField = this.iframe.locator('#email');
+    this.nameField = this.iframe.locator('#billingName');
+    this.cardNumberField = this.iframe.locator('#cardNumber');
+    this.cardExpiryField = this.iframe.locator('#cardExpiry');
+    this.cardCvcField = this.iframe.locator('#cardCvc');
+    this.regionField = this.iframe.locator('#billingPostalCode');
+    this.submitButton = this.iframe.locator('data-testid=hosted-payment-submit-button');
+    this.paymentDeclinedField = this.iframe.locator("//span[@role='alert']",
       { hasText: 'Your card was declined. Please try a different card.' });
   }
 
