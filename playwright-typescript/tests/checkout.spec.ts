@@ -22,7 +22,7 @@ test.describe('Checkout Success', () => {
     await expect(paymentSuccessPage.successMessage).toBeVisible();
   });
 
-  test.skip('authentication @success @authentication', async ({ page }) => {
+  test('authentication @success @authentication', async ({ page }) => {
     const checkoutPage = new CheckoutPage(page);
 
     await enterBillingCardDetails(page, 'authentication', 'valid', 'valid');
