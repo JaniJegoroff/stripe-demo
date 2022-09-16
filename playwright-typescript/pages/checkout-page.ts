@@ -23,34 +23,36 @@ export class CheckoutPage {
     this.cardCvcField = this.iframe.locator('#cardCvc');
     this.regionField = this.iframe.locator('#billingPostalCode');
     this.submitButton = this.iframe.locator('data-testid=hosted-payment-submit-button');
-    this.paymentDeclinedField = this.iframe.locator("//span[@role='alert']",
-      { hasText: 'Your card was declined. Please try a different card.' });
+    // Looks like UI can get 2 texts randomly in the `decline` flow:
+    // 1. 'Your card was declined. Please try a different card.'
+    // 2. 'Your credit card was declined. Try paying with a debit card instead.'
+    this.paymentDeclinedField = this.iframe.locator("//span[@role='alert' and contains(text(),'card was declined.')]");
   }
 
   async goto() {
     await this.page.goto('https://checkout.stripe.dev/preview');
   }
 
-  async enter_email(email: string) {
+  async enterEmail(email: string) {
     await this.emailField.fill(email);
   }
 
-  async enter_name(name: string) {
+  async enterName(name: string) {
     await this.nameField.fill(name);
   }
 
-  async enter_payment_card_information(number: string, expiry: string, cvc: string) {
+  async enterPaymentCardInformation(number: string, expiry: string, cvc: string) {
     await this.cardNumberField.fill(number);
     await this.cardExpiryField.fill(expiry);
     await this.cardCvcField.fill(cvc);
   }
 
-  async enter_country(zip: string) {
+  async enterCountry(zip: string) {
     // use USA as country by default
     await this.regionField.fill(zip);
   }
 
-  async submit_payment() {
+  async submitPayment() {
     await this.submitButton.click();
   }
 }

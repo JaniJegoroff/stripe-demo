@@ -16,7 +16,7 @@ test.describe('Checkout Success', () => {
     const checkoutPage = new CheckoutPage(page);
 
     await enterBillingCardDetails(page, 'valid', 'valid', 'valid');
-    await checkoutPage.submit_payment();
+    await checkoutPage.submitPayment();
 
     const paymentSuccessPage = new PaymentSuccessPage(page);
     await expect(paymentSuccessPage.successMessage).toBeVisible();
@@ -26,7 +26,7 @@ test.describe('Checkout Success', () => {
     const checkoutPage = new CheckoutPage(page);
 
     await enterBillingCardDetails(page, 'authentication', 'valid', 'valid');
-    await checkoutPage.submit_payment();
+    await checkoutPage.submitPayment();
 
     const paymentAuthenticationPage = new PaymentAuthenticationPage(page);
     await paymentAuthenticationPage.complete();
@@ -48,7 +48,7 @@ test.describe('Checkout Declined', () => {
     const checkoutPage = new CheckoutPage(page);
 
     await enterBillingCardDetails(page, 'invalid', 'valid', 'valid');
-    await checkoutPage.submit_payment();
+    await checkoutPage.submitPayment();
 
     await expect(checkoutPage.paymentDeclinedField).toBeVisible();
   });
@@ -57,7 +57,7 @@ test.describe('Checkout Declined', () => {
     const checkoutPage = new CheckoutPage(page);
 
     await enterBillingCardDetails(page, 'authentication', 'valid', 'valid');
-    await checkoutPage.submit_payment();
+    await checkoutPage.submitPayment();
 
     const paymentAuthenticationPage = new PaymentAuthenticationPage(page);
     await paymentAuthenticationPage.fail();
@@ -70,9 +70,9 @@ test.describe('Checkout Declined', () => {
 async function enterBillingContactDetails(page: Page) {
   const checkoutPage = new CheckoutPage(page);
 
-  await checkoutPage.enter_email(TestData.PAYMENT_CARD_HOLDER_EMAIL['valid']);
-  await checkoutPage.enter_name(TestData.PAYMENT_CARD_HOLDER_NAME['valid']);
-  await checkoutPage.enter_country(TestData.PAYMENT_CARD_ZIP['valid']);
+  await checkoutPage.enterEmail(TestData.PAYMENT_CARD_HOLDER_EMAIL['valid']);
+  await checkoutPage.enterName(TestData.PAYMENT_CARD_HOLDER_NAME['valid']);
+  await checkoutPage.enterCountry(TestData.PAYMENT_CARD_ZIP['valid']);
 }
 
 async function enterBillingCardDetails(page: Page, 
@@ -81,7 +81,7 @@ async function enterBillingCardDetails(page: Page,
                                        cardCvcData: string) {
   const checkoutPage = new CheckoutPage(page);
 
-  await checkoutPage.enter_payment_card_information(
+  await checkoutPage.enterPaymentCardInformation(
     TestData.PAYMENT_CARD_NUMBER[cardNumberData], 
     TestData.PAYMENT_CARD_EXPIRATION_DATE[cardExpirationData], 
     TestData.PAYMENT_CARD_CVC[cardCvcData]);
