@@ -11,7 +11,7 @@ export class CheckoutPage {
   readonly regionField: Locator;
   readonly submitButton: Locator;
   readonly paymentDeclinedField: Locator;
-  readonly paymentErrorField: Locator;
+  readonly paymentAuthenticationFailureField: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -27,6 +27,7 @@ export class CheckoutPage {
     // 1. 'Your card was declined. Please try a different card.'
     // 2. 'Your credit card was declined. Try paying with a debit card instead.'
     this.paymentDeclinedField = this.iframe.locator("//span[@role='alert' and contains(text(),'card was declined.')]");
+    this.paymentAuthenticationFailureField = this.iframe.locator("//*[contains(text(),'We are unable to authenticate your payment method. Please choose a different payment method and try again.')]");
   }
 
   async goto() {

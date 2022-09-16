@@ -53,7 +53,7 @@ test.describe('Checkout Declined', () => {
     await expect(checkoutPage.paymentDeclinedField).toBeVisible();
   });
 
-  test.skip('authentication @declined @authentication', async ({ page }) => {
+  test('authentication @declined @authentication', async ({ page }) => {
     const checkoutPage = new CheckoutPage(page);
 
     await enterBillingCardDetails(page, 'authentication', 'valid', 'valid');
@@ -62,8 +62,7 @@ test.describe('Checkout Declined', () => {
     const paymentAuthenticationPage = new PaymentAuthenticationPage(page);
     await paymentAuthenticationPage.fail();
 
-    const paymentSuccessPage = new PaymentSuccessPage(page);
-    await expect(paymentSuccessPage.successMessage).toBeVisible();
+    await expect(checkoutPage.paymentAuthenticationFailureField).toBeVisible();
   });
 });
 
