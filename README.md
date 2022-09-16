@@ -1,5 +1,9 @@
 # stripe-demo
-Test automation examples for Stripe checkout workflow
+Test automation examples for Stripe checkout workflow.
+
+## Motivation
+
+Let's compare how `classic`, `modern` and the `latest modern` web testing frameworks gets the job done.
 
 ## Examples desription
 
