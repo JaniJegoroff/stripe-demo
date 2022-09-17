@@ -32,7 +32,10 @@ When('I submit payment') do
 end
 
 Then('payment should be declined') do
-  msg = 'Your card was declined. Please try a different card.'
+  # Looks like UI can get 2 texts randomly in the `decline` flow:
+  # 1. 'Your card was declined. Please try a different card.'
+  # 2. 'Your credit card was declined. Try paying with a debit card instead.'
+  msg = 'card was declined.'
   checkout_page.switch_to
-  wait_for { checkout_page.payment_declined_msg.eql?(msg) }
+  wait_for { checkout_page.payment_declined_msg.include?(msg) }
 end
