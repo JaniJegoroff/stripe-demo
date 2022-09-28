@@ -4,11 +4,11 @@
 
 ```
 macOS Monterey
-12.6
+12.6.1
 ```
 ```
 node -v
-v18.9.0
+v18.9.1
 ```
 ```
 ruby -v
