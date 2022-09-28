@@ -77,7 +77,7 @@ class CheckoutPage < BasePage
   end
 
   def payment_error_field
-    find_by_class('ConfirmPayment-Error')
+    find_by_class('ConfirmPaymentButton-Error')
   end
 
   def test_inputs_header
