@@ -4,7 +4,7 @@
 
 ```
 macOS Monterey
-12.6
+12.6.1
 ```
 ```
 Stripe CLI
