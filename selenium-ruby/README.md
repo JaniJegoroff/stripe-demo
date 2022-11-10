@@ -4,11 +4,11 @@
 
 ```
 macOS Monterey
-12.6.1
+12.6.2
 ```
 ```
 node -v
-v18.10.0
+v19.0.1
 ```
 ```
 ruby -v
@@ -16,11 +16,11 @@ ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [x86_64-darwin21]
 ```
 ```
 chromedriver -v
-ChromeDriver 105.0.5195.52 (412c95e
+ChromeDriver 107.0.5304.62
 ```
 ```
 Chrome browser
-Version 105.0.5195.102 (Official Build) (x86_64)
+Version 107.0.5304.87 (Official Build) (x86_64)
 ```
 
 ### Install dependencies
