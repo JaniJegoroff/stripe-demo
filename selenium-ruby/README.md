@@ -8,7 +8,7 @@ macOS Monterey
 ```
 ```
 node -v
-v19.0.1
+v19.1.0
 ```
 ```
 ruby -v
