@@ -8,6 +8,6 @@
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.28.0"
+    "@playwright/test": "^1.28.1"
   }
 }
