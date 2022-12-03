@@ -2,7 +2,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     builder (3.2.4)
-    childprocess (4.1.0)
     cucumber (8.0.0)
       builder (~> 3.2, >= 3.2.4)
       cucumber-ci-environment (~> 9.0, >= 9.0.4)
@@ -49,8 +48,7 @@ GEM
       rspec-support (~> 3.12.0)
     rspec-support (3.12.0)
     rubyzip (2.3.2)
-    selenium-webdriver (4.6.1)
-      childprocess (>= 0.5, < 5.0)
+    selenium-webdriver (4.7.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -65,7 +63,7 @@ DEPENDENCIES
   cucumber (~> 8.0)
   rake (~> 13.0)
   rspec (~> 3.12)
-  selenium-webdriver (~> 4.6)
+  selenium-webdriver (~> 4.7)
 
 BUNDLED WITH
    2.3.16
