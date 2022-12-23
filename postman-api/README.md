@@ -4,7 +4,7 @@
 
 ```
 macOS Monterey
-12.6.2
+12.6.3
 ```
 ```
 Stripe CLI
@@ -12,7 +12,7 @@ stripe version 1.13.0
 ```
 ```
 Postman
-Version 10.1.2 (10.1.2)
+Version 10.6.0 (10.6.0)
 ```
 
 ### How to get started - prerequisites
