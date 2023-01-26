@@ -1,4 +1,5 @@
 require 'selenium-webdriver'
+require 'webdrivers/chromedriver'
 
 BASE_URL = 'https://checkout.stripe.dev/preview'.freeze
 
