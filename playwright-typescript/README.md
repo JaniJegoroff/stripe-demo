@@ -4,11 +4,11 @@
 
 ```
 macOS Monterey
-12.6.3
+12.6.4
 ```
 ```
 node -v
-v19.5.0
+v19.7.0
 ```
 
 ### Install dependencies
